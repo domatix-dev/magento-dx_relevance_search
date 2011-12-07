@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Domatix_CatalogSearch>
+			<version>1.0.0</version>
+		</Domatix_CatalogSearch>
+	</modules>
+	<global>
+		<resources>
+			<domatixcatalogsearch_setup>
+				<setup>
+					<module>Domatix_CatalogSearch</module>
+					<class>Domatix_CatalogSearch_Model_Mysql4_Setup</class>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</domatixcatalogsearch_setup>
+		</resources>
+
+		<models>
+			<domatixcatalogsearch>
+				<class>Domatix_CatalogSearch_Model</class>
+				<resourceModel>domatixcatalogsearch_mysql4</resourceModel>
+			</domatixcatalogsearch>
+			<!-- Reemplazar la búsqueda fulltext -->
+			<catalogsearch_mysql4>
+				<rewrite>
+					<fulltext>Domatix_CatalogSearch_Model_Mysql4_Fulltext</fulltext>
+				</rewrite>
+			</catalogsearch_mysql4>
+
+			<domatixcatalogsearch_mysql4>
+				<entities>
+					<fulltext>
+						<table>domatixcatalogsearch_fulltext</table>
+					</fulltext>
+				</entities>
+			</domatixcatalogsearch_mysql4>
+		</models>
+
+		<helpers>
+			<domatixcatalogsearch>
+				<class>Domatix_CatalogSearch_Helper</class>
+			</domatixcatalogsearch>
+		</helpers>
+
+		<resources>
+			<domatixcatalogsearch_write>
+				<connection>
+					<use>core_write</use>
+				</connection>
+			</domatixcatalogsearch_write>
+			<domatixcatalogsearch_read>
+				<connection>
+					<use>core_read</use>
+				</connection>
+			</domatixcatalogsearch_read>
+		</resources>
+
+	</global>
+
+	<adminhtml>
+		<translate>
+			<modules>
+				<Domatix_CatalogSearch>
+					<files>
+						<default>Domatix_CatalogSearch.csv</default>
+					</files>
+				</Domatix_CatalogSearch>
+			</modules>
+		</translate>
+	</adminhtml>
+</config>
